@@ -19,3 +19,8 @@
    ![Screenshot ()](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(115).png)
 8. Mobile View Of Home Screen <br>
    ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(120).png)
+
+
+   ## Screenshot attached : https://drive.google.com/drive/folders/1_nKZhHANRJN5FDww9zZCs03RKwBXq63I?usp=sharing
+
+
