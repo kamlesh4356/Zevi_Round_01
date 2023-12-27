@@ -11,8 +11,6 @@
    ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(111).png)
 3. Products Screen
    ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(112).png)
-4. Products Screen With FiltersOpen
-   ![image](https://github.com/ayush2000mickey/zevi-assignment-ayush-kumar/assets/56113584/dd12f337-c1c8-4671-8405-de677dbb423c)
 5. Products Screen With 5 Star Filter Selected
    ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(113).png)
 6. Products Screen With Products Wishlisted
