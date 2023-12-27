@@ -20,4 +20,4 @@
 7. Products Screen With Hovering On Product Shows View Product Section
    ![Screenshot ()](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(115).png)
 8. Mobile View Of Home Screen <br>
-   ![image](https://github.com/ayush2000mickey/zevi-assignment-ayush-kumar/assets/56113584/18edffda-2a12-4efe-8e43-87b69208007e)
+   ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(120).png)
