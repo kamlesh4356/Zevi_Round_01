@@ -6,7 +6,7 @@
 ## Screenshots
 
 1. Home Screen
-   ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(110).png)
+   ![image](https://drive.google.com/drive/folders/1_nKZhHANRJN5FDww9zZCs03RKwBXq63I)
 2. Home Screen With Suggestion Box Open
    ![image](https://github.com/kamlesh4356/Zevi_Round_01/blob/main/Screenshot%20(111).png)
 3. Products Screen
