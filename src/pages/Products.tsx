@@ -34,73 +34,114 @@ const Products = () => {
     setProducts(fetchProducts());
     setTempProducts(fetchProducts());
   }, []);
+  //old code
+  // useEffect(() => {
+  //   let filteredData: ProductType[] = [];
 
+  //   let filter1Applied = false;
+  //   let filter2Applied = false;
+  //   let filter3Applied = false;
+
+  //   if (multipleFilters.brand.includes(true)) {
+  //     if (multipleFilters.brand[0]) {
+  //       tempProducts.forEach((product) => {
+  //         if (product.productNames === "Incredible Frozen Table")
+  //           filteredData.push(product);
+  //       });
+  //     }
+
+  //     if (multipleFilters.brand[1]) {
+  //       tempProducts.forEach((product) => {
+  //         if (product.productNames === "Tasty Wooden Car") {
+  //           filteredData.push(product);
+  //         }
+  //       });
+  //     }
+  //     filter1Applied = true;
+  //   }
+
+  //   if (multipleFilters.rating.includes(true)) {
+  //     for (let i = 0; i < multipleFilters.rating.length; i++) {
+  //       if (multipleFilters.rating[i]) {
+  //         tempProducts.forEach((product) => {
+  //           if (product.productRating === i + 1) {
+  //             filteredData.push(product);
+  //           }
+  //         });
+  //       }
+  //     }
+  //     filter2Applied = true;
+  //   }
+
+  //   if (multipleFilters.price[0]) {
+  //     tempProducts.forEach((product) => {
+  //       if (product.productDisPrice < 500) {
+  //         filteredData.push(product);
+  //       }
+  //     });
+
+  //     filter3Applied = true;
+  //   }
+
+  //   if (multipleFilters.price[1]) {
+  //     tempProducts.forEach((product) => {
+  //       if (
+  //         product.productDisPrice >= 1000 &&
+  //         product.productDisPrice <= 3000
+  //       ) {
+  //         filteredData.push(product);
+  //       }
+  //     });
+  //     filter3Applied = true;
+  //   }
+
+  //   if (filter1Applied || filter2Applied || filter3Applied) {
+  //     setProducts(filteredData);
+  //   } else {
+  //     setProducts(tempProducts);
+  //   }
+  // }, [multipleFilters, tempProducts]);
   useEffect(() => {
-    let filteredData: ProductType[] = [];
-
-    let filter1Applied = false;
-    let filter2Applied = false;
-    let filter3Applied = false;
+    let filteredData = tempProducts;
 
     if (multipleFilters.brand.includes(true)) {
-      if (multipleFilters.brand[0]) {
-        tempProducts.forEach((product) => {
-          if (product.productNames === "Incredible Frozen Table")
-            filteredData.push(product);
-        });
-      }
-
-      if (multipleFilters.brand[1]) {
-        tempProducts.forEach((product) => {
-          if (product.productNames === "Tasty Wooden Car") {
-            filteredData.push(product);
-          }
-        });
-      }
-      filter1Applied = true;
+      filteredData = filteredData.filter((product) => {
+        return (
+          (multipleFilters.brand[0] && product.productNames === "Incredible Frozen Table") ||
+          (multipleFilters.brand[1] && product.productNames === "Tasty Wooden Car")
+        );
+      });
     }
 
     if (multipleFilters.rating.includes(true)) {
-      for (let i = 0; i < multipleFilters.rating.length; i++) {
-        if (multipleFilters.rating[i]) {
-          tempProducts.forEach((product) => {
-            if (product.productRating === i + 1) {
-              filteredData.push(product);
-            }
-          });
-        }
+      const selectedRatings = multipleFilters.rating.map((isChecked, index) => {
+        return isChecked ? index + 1 : null;
+      }).filter(Boolean);
+
+      filteredData = filteredData.filter((product) => {
+        return selectedRatings.includes(product.productRating);
+      });
+    }
+
+    const priceFilterRange = {
+      under500: multipleFilters.price[0],
+      range1000to3000: multipleFilters.price[1],
+    };
+
+    filteredData = filteredData.filter((product) => {
+      if (priceFilterRange.under500 && priceFilterRange.range1000to3000) {
+        return product.productDisPrice < 500 || (product.productDisPrice >= 1000 && product.productDisPrice <= 3000);
+      } else if (priceFilterRange.under500) {
+        return product.productDisPrice < 500;
+      } else if (priceFilterRange.range1000to3000) {
+        return product.productDisPrice >= 1000 && product.productDisPrice <= 3000;
       }
-      filter2Applied = true;
-    }
+      return true;
+    });
 
-    if (multipleFilters.price[0]) {
-      tempProducts.forEach((product) => {
-        if (product.productDisPrice < 500) {
-          filteredData.push(product);
-        }
-      });
-
-      filter3Applied = true;
-    }
-
-    if (multipleFilters.price[1]) {
-      tempProducts.forEach((product) => {
-        if (
-          product.productDisPrice >= 1000 &&
-          product.productDisPrice <= 3000
-        ) {
-          filteredData.push(product);
-        }
-      });
-      filter3Applied = true;
-    }
-
-    if (filter1Applied || filter2Applied || filter3Applied) {
-      setProducts(filteredData);
-    } else {
-      setProducts(tempProducts);
-    }
+    setProducts(filteredData.length > 0 ? filteredData : tempProducts);
   }, [multipleFilters, tempProducts]);
+
 
   return (
     <div className="products_page">
@@ -322,5 +363,3 @@ const Products = () => {
 };
 
 export default Products;
-
-
